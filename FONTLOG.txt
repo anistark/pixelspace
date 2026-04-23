@@ -1,0 +1,55 @@
+FONTLOG for the Pixelspace font family
+======================================
+
+This file provides detailed information on the Pixelspace font family.
+This information should be distributed along with the Pixelspace fonts
+and any derivative works.
+
+Basic Font Information
+----------------------
+
+Pixelspace is an original pixel display typeface drawn on a 5x7 cell
+grid (with a built-in 1-pixel right-side bearing, effectively 6x8).
+It covers uppercase A-Z, lowercase a-z, digits 0-9 and common ASCII
+punctuation — 93 glyphs in total.
+
+The source glyphs live in `sources/Pixelspace.svg` as an SVG 1.1 font:
+each `<glyph>` holds a sequence of 125x125 unit pixel rectangles inside
+an 875-unit em. `tools/build_font.py` parses those paths, draws each
+"on" pixel as a 110x110-unit rounded square (≈10% corner radius) with
+a 15-unit gap to its neighbors, and emits real .ttf, .otf, and .woff2
+files via fontTools.
+
+Metrics
+  UPEM:                 875
+  Pixel cell:           125 units
+  Pixel body (drawn):   110 units (15-unit gap on the right & below)
+  Pixel corner radius:  ~12 units (~10% of the pixel body)
+  Advance width:        750 units (5 pixel columns + 1 bearing)
+  Ascent:               625 (5 rows above baseline)
+  Descent:              250 (2 rows below baseline)
+  Line gap:             375 (3 blank pixel rows between lines)
+  Cap height:           625
+  x-height:             500
+  Underline position:   -188
+  Underline thickness:  125
+
+ChangeLog
+---------
+
+24 April 2026 (Kumar Anirudha) Pixelspace v1.000
+- Initial release.
+- Regular weight only, 93 glyphs, monospace 5x7 pixel design.
+- Compiled from sources/Pixelspace.svg via fontTools.
+- Rounded-square pixels (10% radius) with 15-unit inter-pixel gap.
+
+Acknowledgements
+----------------
+
+If you make modifications be sure to add your name (N), email (E), web
+address (W) and description (D). This list is in alphabetical order.
+
+N: Kumar Anirudha
+E: fonts@anirudha.dev
+W: https://github.com/anistark/pixelspace
+D: Designer, original pixel glyph drawings, build pipeline, specimen page.
