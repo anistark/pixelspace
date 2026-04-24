@@ -6,6 +6,9 @@ ASCII punctuation you need to set real text. Licensed under the SIL Open
 Font License 1.1 — free to use in personal and commercial work, free to
 modify, free to redistribute.
 
+<img width="1193" height="158" alt="Screenshot 2026-04-24 at 4 31 35 PM" src="https://github.com/user-attachments/assets/903a2363-1189-4e2f-8be5-d37a38ea1a1a" />
+<img width="1195" height="156" alt="Screenshot 2026-04-24 at 4 31 26 PM" src="https://github.com/user-attachments/assets/075913a9-f36e-45ce-9582-205c4502342d" />
+
 ## Install
 
 Grab a release and double-click the font file:
