@@ -10,8 +10,10 @@ Basic Font Information
 
 Pixelspace is an original pixel display typeface drawn on a 5x7 cell
 grid (with a built-in 1-pixel right-side bearing, effectively 6x8).
-It covers uppercase A-Z, lowercase a-z, digits 0-9 and common ASCII
-punctuation — 93 glyphs in total.
+It covers the full GF-latin-core glyph set — uppercase A-Z, lowercase
+a-z, digits 0-9, common ASCII punctuation, Latin-1 Supplement, Latin
+Extended-A/B, general punctuation, currency, combining diacritics, and
+a handful of extended Latin letters — 318 glyphs in total.
 
 The source glyphs live in `sources/Pixelspace.svg` as an SVG 1.1 font:
 each `<glyph>` holds a sequence of 125x125 unit pixel rectangles inside
@@ -26,9 +28,11 @@ Metrics
   Pixel body (drawn):   110 units (15-unit gap on the right & below)
   Pixel corner radius:  ~12 units (~10% of the pixel body)
   Advance width:        750 units (5 pixel columns + 1 bearing)
-  Ascent:               625 (5 rows above baseline)
-  Descent:              250 (2 rows below baseline)
-  Line gap:             375 (3 blank pixel rows between lines)
+  Ascent:               625 (ink top — 5 rows above baseline)
+  Descent:              250 (ink bottom — 2 rows below baseline)
+  hhea/sTypo ascent:    1000 (padded for Google Fonts line-metrics rule)
+  hhea/sTypo descent:   250
+  Line gap:             0    (restored via CSS on specimen)
   Cap height:           625
   x-height:             500
   Underline position:   -188
@@ -39,7 +43,8 @@ ChangeLog
 
 24 April 2026 (Kumar Anirudha) Pixelspace v1.000
 - Initial release.
-- Regular weight only, 93 glyphs, monospace 5x7 pixel design.
+- Regular weight only, 318 glyphs, monospace 5x7 pixel design.
+- Full GF-latin-core coverage.
 - Compiled from sources/Pixelspace.svg via fontTools.
 - Rounded-square pixels (10% radius) with 15-unit inter-pixel gap.
 

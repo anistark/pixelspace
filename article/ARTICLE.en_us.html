@@ -1,0 +1,94 @@
+<img src="specimen.png" alt="Pixelspace specimen — uppercase, lowercase, digits, and punctuation." />
+
+<p>
+  Pixelspace is an original pixel display typeface drawn on a 5&times;7 cell
+  grid, with a built-in one-pixel right-side bearing that effectively makes
+  every glyph occupy a 6&times;8 box. It ships a single monospaced Regular
+  weight covering the full Google Fonts Latin-core set &mdash; 318 glyphs
+  spanning uppercase A&ndash;Z, lowercase a&ndash;z, digits 0&ndash;9, ASCII
+  punctuation, Latin-1 Supplement, Latin Extended-A/B, general punctuation,
+  currency symbols, smart quotes, and combining diacritics &mdash; enough to
+  set modern European Latin text without substitution.
+</p>
+
+<h2>Design</h2>
+
+<p>
+  Pixelspace leans into the honest geometry of pixel type rather than
+  simulating it. Each "on" cell in the 5&times;7 grid is drawn as a softly
+  rounded square &mdash; 110 units wide inside a 125-unit cell, with roughly
+  a 10% corner radius and a deliberate 15-unit gap to its neighbours on every
+  side. The result is a crisp, airy texture that reads like a low-resolution
+  display captured at the moment just before the pixels bleed together. There
+  is no anti-aliasing, no hinting magic, and no attempt to smooth edges: the
+  shape primitive is the pixel itself, baked straight into the outlines.
+</p>
+
+<p>
+  The family is monospace by construction. Every glyph advances the same 750
+  units &mdash; five pixel columns of ink plus a sixth column of right-side
+  bearing &mdash; so columns of text land on a perfect grid. Uppercase
+  letters, lowercase letters, digits, and most punctuation sit fully above
+  the baseline inside the five-row ink zone. The descenders on
+  <code>g&nbsp;j&nbsp;p&nbsp;q&nbsp;y</code> and their accented cousins
+  extend two rows below the baseline, giving the face a real descender
+  without breaking the cell grid.
+</p>
+
+<h2>Intended use</h2>
+
+<p>
+  Pixelspace is built for display. It reads best at integer multiples of its
+  native 7-pixel cell height &mdash; 14&nbsp;px, 21&nbsp;px, 28&nbsp;px,
+  49&nbsp;px, 70&nbsp;px, 105&nbsp;px, and so on &mdash; where every
+  glyph-pixel lands on a whole device pixel and the rounded-square texture
+  stays true. Off-grid sizes still work, but the softness of the rendering
+  flattens the airy gap that defines the face. Posters, headings, splash
+  screens, editorial callouts, game UIs, retro-computing homages, and any
+  interface where text should feel like it came off a low-resolution display
+  are the natural fits.
+</p>
+
+<p>
+  Because every glyph advances the same width, Pixelspace also works for
+  short blocks of monospaced copy &mdash; code samples, terminal mock-ups,
+  countdown timers, scoreboards &mdash; provided the size is generous enough
+  for the pixel shapes to assert themselves. At body-copy sizes the face
+  gives up too much legibility to its own geometry; use it where the pixel
+  grid is the point.
+</p>
+
+<h2>Technical notes</h2>
+
+<p>
+  The source glyphs live in <code>sources/Pixelspace.svg</code> as an SVG 1.1
+  font. Each <code>&lt;glyph&gt;</code> element holds a sequence of
+  125&times;125-unit pixel rectangles inside an 875-unit em box. A Python
+  build script (<code>tools/build_font.py</code>) parses those paths, draws
+  every on-pixel as a 110&times;110-unit rounded square with a 15-unit gap
+  to the next cell, and emits real TrueType (<code>.ttf</code>),
+  PostScript-flavoured OpenType (<code>.otf</code>), and WOFF2
+  (<code>.woff2</code>) binaries via fontTools &mdash; no external editor in
+  the loop. Editing a glyph is a matter of changing pixel rectangles in the
+  SVG and re-running the build.
+</p>
+
+<p>
+  The metrics are tuned for both the pixel grid and the Google Fonts
+  line-metrics rule. The em is 875 units so that seven 125-unit rows fit the
+  cell grid exactly; the advance width is 750 units (five inked columns plus
+  one bearing column); the cap height is 625 and the x-height is 500. The
+  typographic ascent is padded to 1000 and the descent to &minus;250 with a
+  line gap of zero, giving a sum of 1250 units &mdash; roughly 143% of the em
+  &mdash; which clears the Google Fonts requirement that
+  <code>ascender + |descender| + lineGap</code> be at least 120% of the
+  UPM while keeping the visual ink box tightly on the grid.
+</p>
+
+<p>
+  Pixelspace is licensed under the SIL Open Font License, Version 1.1. It is
+  free to use in personal and commercial work, free to modify, and free to
+  redistribute under the same license. "Pixelspace" is a Reserved Font Name:
+  modified versions are welcome, but they must ship under a different
+  primary family name.
+</p>

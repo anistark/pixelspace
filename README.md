@@ -8,10 +8,12 @@
 [![Open Source](https://img.shields.io/badge/open%20source-yes-success?style=flat-square)](https://github.com/anistark/pixelspace)
 
 An original 5×7 pixel display typeface by [Kumar Anirudha](https://github.com/anistark).
-Single weight (Regular), 95 glyphs covering A–Z, a–z, 0–9, and the common
-ASCII punctuation you need to set real text. Licensed under the SIL Open
-Font License 1.1 — free to use in personal and commercial work, free to
-modify, free to redistribute.
+Single weight (Regular), 318 glyphs covering the full Google Fonts
+Latin-core set — A–Z, a–z, 0–9, ASCII punctuation, Latin-1 Supplement,
+Latin Extended-A/B, smart quotes, currency, and combining diacritics —
+everything you need for modern European Latin. Licensed under the SIL
+Open Font License 1.1 — free to use in personal and commercial work,
+free to modify, free to redistribute.
 
 <img width="1193" height="158" alt="Screenshot 2026-04-24 at 4 31 35 PM" src="https://github.com/user-attachments/assets/903a2363-1189-4e2f-8be5-d37a38ea1a1a" />
 <img width="1195" height="156" alt="Screenshot 2026-04-24 at 4 31 26 PM" src="https://github.com/user-attachments/assets/075913a9-f36e-45ce-9582-205c4502342d" />

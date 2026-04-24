@@ -23,7 +23,7 @@ build:
 
 # Serve the docs specimen at http://localhost:8000 (Ctrl+C to stop).
 serve:
-    cd docs && {{py}} -m http.server 8000
+    {{py}} -m http.server 8000 --directory docs
 
 # Render a quick preview PNG of the compiled TTF (alphabet + digits).
 preview: build
@@ -60,15 +60,23 @@ dafont-zip: build
     @unzip -l pixelspace-dafont.zip
 
 # Stage a Google Fonts submission directory under build/gf/ofl/pixelspace/.
+# Initialises build/gf/ as its own git repo so fontbakery's license check
+# does not walk up into this repo and see a duplicate OFL.txt.
 gf-bundle: build
     rm -rf build/gf
     mkdir -p build/gf/ofl/pixelspace
     cp fonts/Pixelspace-Regular.ttf build/gf/ofl/pixelspace/
-    cp OFL.txt FONTLOG.txt METADATA.pb DESCRIPTION.en_us.html \
-       build/gf/ofl/pixelspace/
+    cp OFL.txt FONTLOG.txt METADATA.pb build/gf/ofl/pixelspace/
+    cp -r article build/gf/ofl/pixelspace/
+    git -C build/gf init -q
     @echo ""
     @echo "Google Fonts submission staged at build/gf/ofl/pixelspace/"
     @ls -la build/gf/ofl/pixelspace/
+
+# Run fontbakery against the staged GF bundle (the submission shape).
+check-gf: gf-bundle
+    {{venv}}/bin/fontbakery check-googlefonts \
+        build/gf/ofl/pixelspace/Pixelspace-Regular.ttf
 
 # Remove build outputs (fonts, docs font assets, bundles).
 clean:

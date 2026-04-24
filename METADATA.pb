@@ -12,5 +12,8 @@ fonts {
   full_name: "Pixelspace Regular"
   copyright: "Copyright 2026 The Pixelspace Project Authors (https://github.com/anistark/pixelspace)"
 }
-subsets: "menu"
 subsets: "latin"
+subsets: "menu"
+source {
+  repository_url: "https://github.com/anistark/pixelspace"
+}
