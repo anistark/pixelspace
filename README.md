@@ -6,7 +6,6 @@
 [![Formats](https://img.shields.io/badge/formats-TTF%20%C2%B7%20OTF%20%C2%B7%20WOFF2-lightgray?style=flat-square)](fonts/)
 [![Category](https://img.shields.io/badge/category-display%20%C2%B7%20pixel-6e4a32?style=flat-square)](https://pixelspace.anirudha.dev)
 [![Open Source](https://img.shields.io/badge/open%20source-yes-success?style=flat-square)](https://github.com/anistark/pixelspace)
-[![GitHub Stars](https://img.shields.io/github/stars/anistark/pixelspace?style=flat-square&label=stars)](https://github.com/anistark/pixelspace/stargazers)
 
 An original 5×7 pixel display typeface by [Kumar Anirudha](https://github.com/anistark).
 Single weight (Regular), 95 glyphs covering A–Z, a–z, 0–9, and the common
@@ -73,13 +72,7 @@ pixel rectangles into TrueType outlines, and writes `.ttf`, `.otf`, and
 `.woff2` to `fonts/`. It also stages the `.ttf` and `.woff2` into `docs/`
 so the GitHub Pages site is self-contained.
 
-## Preview site
-
-[`docs/index.html`](docs/index.html) is a GitHub Pages-ready specimen
-that uses `@font-face` to load the compiled font. Enable Pages with
-"Deploy from a branch" → `main` → `/docs` to get a live demo URL.
-
-### Tweaking a glyph
+## Tweaking a glyph
 
 Open `sources/Pixelspace.svg` and edit the `<glyph>` element for any
 character. Each pixel is a path segment of the form
