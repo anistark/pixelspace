@@ -9,6 +9,8 @@
       content="Pixelspace: a free, open-source 5×7 pixel display typeface by Kumar Anirudha. Licensed under the SIL Open Font License."
     />
 
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -84,7 +86,7 @@
       .shell {
         max-width: 1280px;
         margin: 0 auto;
-        padding: 56px 48px 120px;
+        padding: 56px 48px 32px;
       }
 
       /* ---- Masthead ---- */
@@ -162,9 +164,10 @@
         margin-bottom: 48px;
       }
       .hero-word {
-        font-size: 140px; /* 25px per glyph-pixel — integer × 7 (UPEM/pixel) */
+        font-size: clamp(35px, 10vw, 133px);
         line-height: 1;
         margin-bottom: 36px;
+        text-align: center;
       }
       .hero-sub {
         display: flex;
@@ -409,6 +412,127 @@
         width: 18px;
         height: 18px;
         display: block;
+      }
+
+      /* ---- Responsive ---- */
+      @media (max-width: 900px) {
+        .shell {
+          padding: 32px 24px 24px;
+        }
+        .mast {
+          grid-template-columns: 1fr;
+          gap: 10px;
+          text-align: center;
+          padding: 14px 0;
+          margin-bottom: 32px;
+        }
+        .mast .meta.r {
+          text-align: center;
+        }
+        .hero {
+          padding: 24px 0 36px;
+          margin-bottom: 32px;
+        }
+        .hero-word {
+          margin-bottom: 20px;
+        }
+        .hero-sub {
+          flex-direction: column;
+          gap: 6px;
+          text-align: center;
+        }
+        .sec {
+          margin-bottom: 48px;
+        }
+        .sec-head {
+          margin-bottom: 20px;
+        }
+        .s-xl {
+          font-size: 56px;
+        }
+        .s-lg {
+          font-size: 42px;
+        }
+        .s-md {
+          font-size: 28px;
+        }
+        .s-sm {
+          font-size: 21px;
+        }
+        .s-para {
+          font-size: 28px;
+        }
+        .tryout-input {
+          font-size: 28px;
+          min-height: 120px;
+          padding: 14px 16px;
+        }
+        .sample-row {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+        .sample-row .render {
+          overflow-x: auto;
+        }
+        .glyph-grid {
+          grid-template-columns: repeat(auto-fill, minmax(76px, 1fr));
+        }
+        .cell {
+          padding: 12px 8px 10px;
+          min-height: 96px;
+          gap: 10px;
+        }
+        .cell .slot {
+          font-size: 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .shell {
+          padding: 20px 16px 20px;
+        }
+        .hero-word {
+          margin-bottom: 16px;
+        }
+        .hero-sub {
+          font-size: 10px;
+        }
+        .s-xl {
+          font-size: 42px;
+        }
+        .s-lg {
+          font-size: 35px;
+        }
+        .s-md {
+          font-size: 21px;
+        }
+        .s-sm {
+          font-size: 14px;
+        }
+        .s-para {
+          font-size: 21px;
+        }
+        .tryout-input {
+          font-size: 21px;
+          min-height: 96px;
+        }
+        .glyph-grid {
+          grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+        }
+        .cell {
+          padding: 10px 6px 8px;
+          min-height: 80px;
+        }
+        .cell .slot {
+          font-size: 28px;
+        }
+        .cell .char-label {
+          font-size: 9px;
+        }
+        footer {
+          flex-direction: column;
+          gap: 12px;
+        }
       }
     </style>
   </head>
