@@ -31,7 +31,7 @@ DOCS_DIR = ROOT / "docs"
 
 FAMILY = "Pixelspace"
 STYLE = "Regular"
-VERSION = "1.000"
+VERSION = "1.001"
 COPYRIGHT = "Copyright 2026 The Pixelspace Project Authors (https://github.com/anistark/pixelspace)"
 MANUFACTURER = "Kumar Anirudha"
 DESIGNER = "Kumar Anirudha"

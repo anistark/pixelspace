@@ -41,6 +41,12 @@ Metrics
 ChangeLog
 ---------
 
+1 May 2026 (Kumar Anirudha) Pixelspace v1.001
+- Glyph polish: redrew lowercase c, the backtick (`), Ø/ø, and the
+  caron/cedilla/dot-above/macron diacritics on c, e, i, t and friends
+  (ç, č, ċ, ć, è, é, ê, ë, ē, ė, ě, ī, ť, ț, ȷ) for cleaner pixel
+  alignment. Glyph count and metrics unchanged.
+
 24 April 2026 (Kumar Anirudha) Pixelspace v1.000
 - Initial release.
 - Regular weight only, 318 glyphs, monospace 5x7 pixel design.

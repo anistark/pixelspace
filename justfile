@@ -29,6 +29,10 @@ serve:
 preview: build
     {{py}} tools/preview.py
 
+# Regenerate article/specimen.png — the hero image used in ARTICLE.en_us.html.
+specimen: build
+    {{py}} tools/specimen.py
+
 # Verify fonts/ and docs/ binaries are byte-identical + CSS is staged.
 # Pure compare — does NOT rebuild, so it reflects the on-disk state.
 # Catches hand-edits or missed copies after a partial build.
