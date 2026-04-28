@@ -1,14 +1,17 @@
-<img src="specimen.png" alt="Pixelspace specimen — uppercase, lowercase, digits, and punctuation." />
+<img src="specimen.png" alt="Pixelspace specimen — uppercase, lowercase, digits, punctuation, and box-drawing / block characters." />
 
 <p>
   Pixelspace is an original pixel display typeface drawn on a 5&times;7 cell
   grid, with a built-in one-pixel right-side bearing that effectively makes
   every glyph occupy a 6&times;8 box. It ships a single monospaced Regular
-  weight covering the full Google Fonts Latin-core set &mdash; 318 glyphs
-  spanning uppercase A&ndash;Z, lowercase a&ndash;z, digits 0&ndash;9, ASCII
-  punctuation, Latin-1 Supplement, Latin Extended-A/B, general punctuation,
-  currency symbols, smart quotes, and combining diacritics &mdash; enough to
-  set modern European Latin text without substitution.
+  weight covering the full Google Fonts Latin-core set &mdash; uppercase
+  A&ndash;Z, lowercase a&ndash;z, digits 0&ndash;9, ASCII punctuation,
+  Latin-1 Supplement, Latin Extended-A/B, general punctuation, currency
+  symbols, smart quotes, and combining diacritics &mdash; plus most of
+  Unicode Box Drawing (U+2500&ndash;257F) and Block Elements
+  (U+2580&ndash;259F) for terminal and TUI work. 474 glyphs in total,
+  enough to set modern European Latin text without substitution and to
+  drive the borders, dividers, and bar charts of a real terminal session.
 </p>
 
 <h2>Design</h2>
@@ -51,26 +54,44 @@
 
 <p>
   Because every glyph advances the same width, Pixelspace also works for
-  short blocks of monospaced copy &mdash; code samples, terminal mock-ups,
-  countdown timers, scoreboards &mdash; provided the size is generous enough
-  for the pixel shapes to assert themselves. At body-copy sizes the face
-  gives up too much legibility to its own geometry; use it where the pixel
-  grid is the point.
+  short blocks of monospaced copy &mdash; code samples, scoreboards,
+  countdown timers &mdash; provided the size is generous enough for the
+  pixel shapes to assert themselves. At body-copy sizes the face gives up
+  too much legibility to its own geometry; use it where the pixel grid is
+  the point.
+</p>
+
+<h2>Terminal use</h2>
+
+<p>
+  Pixelspace v1.100 added 156 box-drawing and block-element glyphs, drawn
+  in the same gappy rounded-pixel style as the Latin glyphs rather than
+  the flush, edge-to-edge strokes most terminal fonts use. The trade-off
+  is deliberate: TUI borders read as stitched dotted lines, btop bar
+  charts as columns of LEGO towers, powerline-style triangles as pixel
+  staircases. A vim split or lazygit window framed in Pixelspace is
+  unmistakable on screen, at the cost of the conventional appearance of
+  continuous box-drawing strokes. The face is best paired with a 21&nbsp;px
+  or 28&nbsp;px terminal cell so each design pixel lands on a whole device
+  pixel and the airy gap is preserved in the rendered output.
 </p>
 
 <h2>Technical notes</h2>
 
 <p>
-  The source glyphs live in <code>sources/Pixelspace.svg</code> as an SVG 1.1
-  font. Each <code>&lt;glyph&gt;</code> element holds a sequence of
-  125&times;125-unit pixel rectangles inside an 875-unit em box. A Python
-  build script (<code>tools/build_font.py</code>) parses those paths, draws
-  every on-pixel as a 110&times;110-unit rounded square with a 15-unit gap
-  to the next cell, and emits real TrueType (<code>.ttf</code>),
-  PostScript-flavoured OpenType (<code>.otf</code>), and WOFF2
-  (<code>.woff2</code>) binaries via fontTools &mdash; no external editor in
-  the loop. Editing a glyph is a matter of changing pixel rectangles in the
-  SVG and re-running the build.
+  The canonical source is <code>sources/glyphs.txt</code>, a plain-text
+  bitmap file with one <code>@glyph</code> section per character holding
+  a 7-row by 5-column grid (<code>.</code> for off, <code>#</code> for
+  on). A Python build script (<code>tools/build_font.py</code>) parses
+  the bitmap, draws every on-pixel as a 110&times;110-unit rounded square
+  with a 15-unit gap to the next cell, and emits real TrueType
+  (<code>.ttf</code>), PostScript-flavoured OpenType (<code>.otf</code>),
+  and WOFF2 (<code>.woff2</code>) binaries via fontTools &mdash; no
+  external editor in the loop. Editing a glyph means flipping pixels in
+  the bitmap and re-running <code>just build</code>. The legacy
+  <code>sources/Pixelspace.svg</code> is preserved as a versioned
+  artifact, regenerated from the bitmap source by
+  <code>tools/bitmap_to_svg.py</code>.
 </p>
 
 <p>

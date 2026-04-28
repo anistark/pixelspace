@@ -1,21 +1,27 @@
 #!/usr/bin/env python3
-"""Build Pixelspace TTF/OTF/WOFF2 from the SVG font in sources/Pixelspace.svg.
+"""Build Pixelspace TTF/OTF/WOFF2 from the bitmap font in sources/glyphs.txt.
 
-The SVG font is the canonical source: it stores each glyph as a sequence of
-125x125 unit pixel rectangles inside an 875-unit em. This script parses the
-`<font-face>` metrics plus every `<glyph>` (and `<missing-glyph>`) path, then
-emits binary fonts via fontTools.
+`sources/glyphs.txt` is the canonical source — see tools/parse_bitmap.py
+for the format. Each glyph is a 7×5 bitmap that this script lowers to
+font-unit (x, y) pixel coordinates and renders as inset rounded squares
+(the signature gappy-pixel look).
 
-Path pixels are encoded as `M X,Y h125 v-125 h-125 Z` — one `M` per pixel,
-where `(X, Y)` is the top-left corner in SVG-font (y-up) coordinates. The
-baseline sits at y=0; rows 0-4 are above it (cap height 625), rows 5-6
-descend below (descent 250).
+`sources/Pixelspace.svg` is a versioned artifact regenerated from the
+bitmap source by tools/bitmap_to_svg.py. The legacy `parse_svg_font()`
+parser below is retained for that migration tooling; the build itself no
+longer reads SVG.
+
+Path pixels (in the generated SVG / TT outlines) are encoded as
+`M X,Y h125 v-125 h-125 Z` — one M per pixel, where (X, Y) is the top-left
+corner in SVG-font (y-up) coordinates. The baseline sits at y=0; rows 0-4
+are above it (cap height 625), rows 5-6 descend below (descent 250).
 """
 from __future__ import annotations
 
 import base64
 import re
 import shutil
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
@@ -24,14 +30,18 @@ from fontTools.pens.ttGlyphPen import TTGlyphPen
 from fontTools.pens.t2CharStringPen import T2CharStringPen
 from fontTools.ttLib import newTable
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from parse_bitmap import parse_bitmap  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "sources" / "Pixelspace.svg"
+SRC = ROOT / "sources" / "glyphs.txt"
+SVG_ARTIFACT = ROOT / "sources" / "Pixelspace.svg"
 FONT_DIR = ROOT / "fonts"
 DOCS_DIR = ROOT / "docs"
 
 FAMILY = "Pixelspace"
 STYLE = "Regular"
-VERSION = "1.001"
+VERSION = "1.100"
 COPYRIGHT = "Copyright 2026 The Pixelspace Project Authors (https://github.com/anistark/pixelspace)"
 MANUFACTURER = "Kumar Anirudha"
 DESIGNER = "Kumar Anirudha"
@@ -293,6 +303,12 @@ def build(data: dict) -> None:
     fb_tt.setupHorizontalMetrics(hmtx)
     fb_tt.setupHorizontalHeader(ascent=ascent, descent=descent, lineGap=line_gap)
 
+    # head.fontRevision must agree with the name-table version string,
+    # otherwise Font Bakery raises `head_version_mismatch`. Setting just
+    # the field directly preserves fontTools' auto-set created/modified
+    # timestamps (`setupHead()` would clobber them).
+    fb_tt.font["head"].fontRevision = float(VERSION)
+
     # fsSelection: REGULAR (bit 6) + USE_TYPO_METRICS (bit 7). A zero
     # fsSelection causes some browsers to silently reject the font's
     # glyphs and fall back to the next family; bit 7 asks clients to
@@ -322,6 +338,10 @@ def build(data: dict) -> None:
         fsSelection=fs_selection,
         version=4,
         ulCodePageRange1=1,     # bit 0 = Latin 1 (CP 1252)
+        # Unicode ranges 2: bit 47 (Box Drawing U+2500-257F) + bit 48
+        # (Block Elements U+2580-259F). ulUnicodeRange2 covers global bits
+        # 32-63, so positions 15 and 16 within the field.
+        ulUnicodeRange2=(1 << 15) | (1 << 16),
         usWeightClass=400,
         usWidthClass=5,
         panose=os2_panose,
@@ -429,6 +449,7 @@ def build(data: dict) -> None:
     )
     fb_otf.setupHorizontalMetrics(hmtx)
     fb_otf.setupHorizontalHeader(ascent=ascent, descent=descent, lineGap=line_gap)
+    fb_otf.font["head"].fontRevision = float(VERSION)
     fb_otf.setupOS2(
         sTypoAscender=ascent,
         sTypoDescender=descent,
@@ -442,6 +463,10 @@ def build(data: dict) -> None:
         fsSelection=fs_selection,
         version=4,
         ulCodePageRange1=1,     # bit 0 = Latin 1 (CP 1252)
+        # Unicode ranges 2: bit 47 (Box Drawing U+2500-257F) + bit 48
+        # (Block Elements U+2580-259F). ulUnicodeRange2 covers global bits
+        # 32-63, so positions 15 and 16 within the field.
+        ulUnicodeRange2=(1 << 15) | (1 << 16),
         usWeightClass=400,
         usWidthClass=5,
         panose=os2_panose,
@@ -477,7 +502,7 @@ def build(data: dict) -> None:
 
 
 if __name__ == "__main__":
-    data = parse_svg_font(SRC)
+    data = parse_bitmap(SRC)
     m = data["metrics"]
     print(
         f"parsed {len(data['glyphs'])} glyphs from {SRC.name} "

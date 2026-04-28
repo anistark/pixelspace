@@ -2,15 +2,15 @@
 
 <svg xmlns="http://www.w3.org/2000/svg">
   <metadata>
-    Pixelspace v0.1 — a 5x7 pixel font with 318 glyphs.
-    Covers GF-latin-core plus ASCII punctuation.
+    Pixelspace — a 5x7 pixel font with 318 glyphs.
+    Generated from sources/glyphs.txt by tools/bitmap_to_svg.py.
     Grid: 5 columns x 7 rows. 1 pixel = 125 font units. units-per-em = 875.
   </metadata>
   <defs>
     <font id="Pixelspace" horiz-adv-x="750">
       <font-face font-family="Pixelspace" font-weight="400" font-stretch="normal" units-per-em="875" ascent="625" descent="-250" cap-height="625" x-height="500" bbox="0 -250 625 625" panose-1="2 0 5 9 0 0 0 0 0 0" underline-position="-188" underline-thickness="125"></font-face>
-      <missing-glyph horiz-adv-x="750" d="M0,625h125v-125h-125ZM125,625h125v-125h-125ZM250,625h125v-125h-125ZM375,625h125v-125h-125ZM500,625h125v-125h-125ZM0,-125h125v-125h-125ZM125,-125h125v-125h-125ZM250,-125h125v-125h-125ZM375,-125h125v-125h-125ZM500,-125h125v-125h-125ZM0,500h125v-125h-125ZM500,500h125v-125h-125ZM0,375h125v-125h-125ZM500,375h125v-125h-125ZM0,250h125v-125h-125ZM500,250h125v-125h-125ZM0,125h125v-125h-125ZM500,125h125v-125h-125ZM0,0h125v-125h-125ZM500,0h125v-125h-125Z"></missing-glyph>
-    <glyph glyph-name="space" unicode=" " horiz-adv-x="750"></glyph>
+      <missing-glyph horiz-adv-x="750" d="M0,625h125v-125h-125ZM125,625h125v-125h-125ZM250,625h125v-125h-125ZM375,625h125v-125h-125ZM500,625h125v-125h-125ZM0,500h125v-125h-125ZM500,500h125v-125h-125ZM0,375h125v-125h-125ZM500,375h125v-125h-125ZM0,250h125v-125h-125ZM500,250h125v-125h-125ZM0,125h125v-125h-125ZM500,125h125v-125h-125ZM0,0h125v-125h-125ZM500,0h125v-125h-125ZM0,-125h125v-125h-125ZM125,-125h125v-125h-125ZM250,-125h125v-125h-125ZM375,-125h125v-125h-125ZM500,-125h125v-125h-125Z"></missing-glyph>
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="750" d=""></glyph>
     <glyph glyph-name="uni0021" unicode="!" horiz-adv-x="750" d="M250,625h125v-125h-125ZM250,500h125v-125h-125ZM250,375h125v-125h-125ZM250,250h125v-125h-125ZM250,125h125v-125h-125ZM250,-125h125v-125h-125Z"></glyph>
     <glyph glyph-name="uni0022" unicode="&#34;" horiz-adv-x="750" d="M125,625h125v-125h-125ZM375,625h125v-125h-125ZM125,500h125v-125h-125ZM375,500h125v-125h-125Z"></glyph>
     <glyph glyph-name="uni0023" unicode="#" horiz-adv-x="750" d="M125,625h125v-125h-125ZM375,625h125v-125h-125ZM125,500h125v-125h-125ZM375,500h125v-125h-125ZM0,375h125v-125h-125ZM125,375h125v-125h-125ZM250,375h125v-125h-125ZM375,375h125v-125h-125ZM500,375h125v-125h-125ZM125,250h125v-125h-125ZM375,250h125v-125h-125ZM0,125h125v-125h-125ZM125,125h125v-125h-125ZM250,125h125v-125h-125ZM375,125h125v-125h-125ZM500,125h125v-125h-125ZM125,0h125v-125h-125ZM375,0h125v-125h-125ZM125,-125h125v-125h-125ZM375,-125h125v-125h-125Z"></glyph>
