@@ -1,0 +1,44 @@
+name: release-zip
+
+# When a GitHub release is created (e.g. via `just gh-release` or the
+# web UI), build the font and attach Pixelspace.zip — the asset the
+# website's Download button links to.
+
+on:
+  release:
+    types: [created]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-attach:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install build deps
+        run: pip install fonttools brotli pillow
+
+      - name: Build font binaries
+        run: python tools/build_font.py
+
+      - name: Bundle release zip
+        run: |
+          rm -f Pixelspace.zip
+          zip -j Pixelspace.zip \
+            fonts/Pixelspace-Regular.ttf \
+            fonts/Pixelspace-Regular.otf \
+            OFL.txt FONTLOG.txt INSTALL.txt README.md
+          unzip -l Pixelspace.zip
+
+      - name: Attach zip to release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${{ github.event.release.tag_name }}" \
+            Pixelspace.zip --clobber

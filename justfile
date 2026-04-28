@@ -7,6 +7,9 @@ venv := ".venv"
 py   := venv + "/bin/python"
 pip  := venv + "/bin/pip"
 
+# Single source of truth for the version — read from build_font.py.
+version := `grep '^VERSION = ' tools/build_font.py | cut -d'"' -f2`
+
 # Show available recipes.
 default:
     @just --list
@@ -63,6 +66,40 @@ dafont-zip: build
     @echo "Bundle: pixelspace-dafont.zip"
     @unzip -l pixelspace-dafont.zip
 
+# The website's Download button links to this asset on the latest release.
+# Normally built & attached by .github/workflows/release-zip.yml on
+# release:published — run locally only if you need to attach by hand.
+# Build the user-facing release zip (TTF + OTF + license + install).
+release-zip: build
+    rm -f Pixelspace.zip
+    zip -j Pixelspace.zip \
+        fonts/Pixelspace-Regular.ttf \
+        fonts/Pixelspace-Regular.otf \
+        OFL.txt FONTLOG.txt INSTALL.txt README.md
+    @echo ""
+    @echo "Bundle: Pixelspace.zip — attach to the GitHub release"
+    @unzip -l Pixelspace.zip
+
+# The release-zip workflow then auto-attaches Pixelspace.zip — no need
+# to run release-zip locally.
+# Cut a GitHub release for the current VERSION.
+gh-release:
+    @gh auth status >/dev/null 2>&1 || { echo "✗ Run 'gh auth login' first"; exit 1; }
+    @echo "Releasing v{{version}}..."
+    gh release create v{{version}} \
+        --title "Pixelspace v{{version}}" \
+        --notes "Pixelspace v{{version}}. See [FONTLOG.txt](https://github.com/anistark/pixelspace/blob/main/FONTLOG.txt) for changes. The downloadable .zip will be attached automatically by CI."
+    @echo ""
+    @echo "Released: https://github.com/anistark/pixelspace/releases/tag/v{{version}}"
+
+# Cuts the GitHub release; the release-zip workflow then builds the
+# font on CI and attaches Pixelspace.zip — no local zip step needed.
+# Publish a new version (cut the GitHub release; CI handles the zip).
+publish: gh-release
+    @echo ""
+    @echo "Watch the asset attach at:"
+    @echo "  https://github.com/anistark/pixelspace/actions/workflows/release-zip.yml"
+
 # Stage a Google Fonts submission directory under build/gf/ofl/pixelspace/.
 # Initialises build/gf/ as its own git repo so fontbakery's license check
 # does not walk up into this repo and see a duplicate OFL.txt.
@@ -88,5 +125,5 @@ clean:
           fonts/Pixelspace-Regular.woff2 fonts/Pixelspace-Regular.png
     rm -f docs/Pixelspace-Regular.ttf docs/Pixelspace-Regular.woff2 \
           docs/pixelspace-font.css
-    rm -f pixelspace-dafont.zip
+    rm -f pixelspace-dafont.zip Pixelspace.zip
     rm -rf build

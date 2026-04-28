@@ -1,0 +1,80 @@
+Pixelspace — install on your machine
+====================================
+
+This bundle contains:
+
+  Pixelspace-Regular.ttf   TrueType — works everywhere (recommended).
+  Pixelspace-Regular.otf   OpenType/CFF — same font, alt format.
+  OFL.txt                  License (SIL Open Font License 1.1).
+  FONTLOG.txt              Version history & contributor notes.
+  README.md                Project overview.
+  INSTALL.txt              This file.
+
+You only need to install ONE of the .ttf or .otf — pick TTF if unsure.
+
+------------------------------------------------------------------------
+macOS
+------------------------------------------------------------------------
+1. Double-click Pixelspace-Regular.ttf.
+2. In the Font Book preview window that opens, click "Install Font".
+3. Pixelspace will be available in every app that uses system fonts.
+
+To remove later: open Font Book, find Pixelspace, right-click → Remove.
+
+------------------------------------------------------------------------
+Windows
+------------------------------------------------------------------------
+1. Right-click Pixelspace-Regular.ttf and choose "Install"
+   (or "Install for all users" — needs admin).
+2. The font is now in C:\Windows\Fonts and available everywhere.
+
+To remove later: Settings → Personalization → Fonts → Pixelspace → Uninstall.
+
+------------------------------------------------------------------------
+Linux
+------------------------------------------------------------------------
+Per-user (no sudo):
+
+    mkdir -p ~/.local/share/fonts
+    cp Pixelspace-Regular.ttf ~/.local/share/fonts/
+    fc-cache -f
+
+System-wide:
+
+    sudo cp Pixelspace-Regular.ttf /usr/local/share/fonts/
+    sudo fc-cache -f
+
+Verify:
+
+    fc-list | grep -i pixelspace
+
+------------------------------------------------------------------------
+Use it in CSS (no install needed)
+------------------------------------------------------------------------
+@font-face {
+  font-family: "Pixelspace";
+  src: url("Pixelspace-Regular.woff2") format("woff2"),
+       url("Pixelspace-Regular.ttf")   format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.pixel { font-family: "Pixelspace", monospace; }
+
+------------------------------------------------------------------------
+Notes
+------------------------------------------------------------------------
+- Pixelspace is a 5×7 bitmap-style display face — for crispest results,
+  set sizes that are multiples of 7px (14, 21, 28, 35, 49, 70, 105…) and
+  disable font smoothing in CSS:
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+- Terminal apps: pick a size that is a clean multiple of the cell height
+  your terminal uses (often 14 or 21 px on HiDPI).
+
+License: SIL Open Font License 1.1 (see OFL.txt) — free for personal and
+commercial use, modification, and redistribution.
+
+Project:  https://github.com/anistark/pixelspace
+Specimen: https://pixelspace.anirudha.dev
