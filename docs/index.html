@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Pixelspace — v1.001 Specimen</title>
+    <title>Pixelspace — v1.100 Specimen</title>
     <meta
       name="description"
       content="Pixelspace: a free, open-source 5×7 pixel display typeface by Kumar Anirudha. Licensed under the SIL Open Font License."
@@ -541,12 +541,12 @@
       <!-- Masthead -->
       <header class="mast">
         <div class="meta">
-          Pixelspace / v1.001
+          Pixelspace / v1.100
           <span id="font-status" class="load-status">checking&hellip;</span>
         </div>
         <div class="title">Type Specimen</div>
         <div class="meta r">
-          5 &times; 7 &nbsp;·&nbsp; 318 Glyphs
+          5 &times; 7 &nbsp;·&nbsp; 474 Glyphs
           <button
             id="theme-toggle"
             class="theme-toggle"
@@ -684,10 +684,28 @@
         <div class="glyph-grid" id="grid-punct"></div>
       </section>
 
-      <!-- 06 Install -->
+      <!-- 06 Box drawing -->
       <section class="sec">
         <div class="sec-head">
-          <h2>06 &nbsp; Install</h2>
+          <h2>06 &nbsp; Box drawing</h2>
+          <div class="n">U+2500 &ndash; 257F &nbsp;·&nbsp; 124 glyphs</div>
+        </div>
+        <div class="glyph-grid" id="grid-boxdraw"></div>
+      </section>
+
+      <!-- 07 Block elements -->
+      <section class="sec">
+        <div class="sec-head">
+          <h2>07 &nbsp; Block elements</h2>
+          <div class="n">U+2580 &ndash; 259F &nbsp;·&nbsp; 32 glyphs</div>
+        </div>
+        <div class="glyph-grid" id="grid-blocks"></div>
+      </section>
+
+      <!-- 08 Install -->
+      <section class="sec">
+        <div class="sec-head">
+          <h2>08 &nbsp; Install</h2>
           <div class="n">&#64;font-face</div>
         </div>
         <pre class="code">
@@ -822,9 +840,21 @@
         return out;
       }
 
+      function codepoints(start, end, exclude = []) {
+        const skip = new Set(exclude);
+        const out = [];
+        for (let cp = start; cp <= end; cp++) {
+          if (!skip.has(cp)) out.push(String.fromCodePoint(cp));
+        }
+        return out;
+      }
+
       fill("grid-upper", range("A", "Z"));
       fill("grid-lower", range("a", "z"));
       fill("grid-digits", range("0", "9"));
+      // Box drawing — skip U+254C–254F (heavy-double-dash variants not in this build).
+      fill("grid-boxdraw", codepoints(0x2500, 0x257F, [0x254C, 0x254D, 0x254E, 0x254F]));
+      fill("grid-blocks", codepoints(0x2580, 0x259F));
       fill("grid-punct", [
         "!",
         '"',

@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parent.parent
 TTF = ROOT / "fonts" / "Pixelspace-Regular.ttf"
 OUT = ROOT / "article" / "specimen.png"
 
-W, H = 1600, 800
+W, H = 1600, 960
 MARGIN = 40
 
 img = Image.new("RGB", (W, H), "white")
@@ -23,7 +23,7 @@ body = ImageFont.truetype(str(TTF), 56)     # 8 px / pixel
 
 draw.text((MARGIN, 0), "Pixelspace", font=title, fill="black")
 draw.text((MARGIN, 210), "A 5x7 pixel display typeface", font=sub, fill="#444")
-draw.text((MARGIN, 290), "Single weight . 318 glyphs", font=sub, fill="#444")
+draw.text((MARGIN, 290), "Single weight . 474 glyphs", font=sub, fill="#444")
 
 rows = [
     "ABCDEFGHIJKLMN",
@@ -31,6 +31,7 @@ rows = [
     "abcdefghijklmn",
     "opqrstuvwxyz",
     "0123456789 .,:;!?",
+    "┌─┬─┐ ━ ═ ░▒▓█ ▖▗▘▝",
 ]
 y = 390
 for row in rows:
