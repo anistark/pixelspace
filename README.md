@@ -3,7 +3,8 @@
 [![Website](https://img.shields.io/badge/site-pixelspace.anirudha.dev-000000?style=flat-square)](https://pixelspace.anirudha.dev)
 [![License: OFL 1.1](https://img.shields.io/badge/license-OFL%201.1-blue.svg?style=flat-square)](OFL.txt)
 [![Version](https://img.shields.io/badge/version-1.100-brightgreen.svg?style=flat-square)](FONTLOG.txt)
-[![Formats](https://img.shields.io/badge/formats-TTF%20%C2%B7%20OTF%20%C2%B7%20WOFF2-lightgray?style=flat-square)](fonts/)
+[![Glyphs](https://img.shields.io/badge/glyphs-474-ffffff?style=flat-square)](FONTLOG.txt)
+[![Formats](https://img.shields.io/badge/formats-TTF%20%C2%B7%20OTF%20%C2%B7%20WOFF2-white?style=flat-square)](fonts/)
 [![Category](https://img.shields.io/badge/category-display%20%C2%B7%20pixel-6e4a32?style=flat-square)](https://pixelspace.anirudha.dev)
 [![Open Source](https://img.shields.io/badge/open%20source-yes-success?style=flat-square)](https://github.com/anistark/pixelspace)
 
