@@ -12,7 +12,10 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6B4FV6ZP2E"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-6B4FV6ZP2E"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -91,7 +94,9 @@
         font-size: 15px;
         line-height: 1.5;
         -webkit-font-smoothing: antialiased;
-        transition: background-color 120ms ease, color 120ms ease;
+        transition:
+          background-color 120ms ease,
+          color 120ms ease;
       }
 
       .shell {
@@ -164,7 +169,9 @@
         line-height: 1;
         text-decoration: none;
         display: inline-block;
-        transition: background-color 120ms ease, color 120ms ease;
+        transition:
+          background-color 120ms ease,
+          color 120ms ease;
       }
       .theme-toggle:hover,
       .pill-btn:hover {
@@ -452,6 +459,97 @@
         letter-spacing: 0.04em;
       }
 
+      /* ---- Using Pixelspace (credit / badge / cite) ---- */
+      .credit-intro {
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--ink);
+        margin: 0 0 24px;
+      }
+      .credit-intro a {
+        color: var(--accent);
+      }
+      .credit-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--line);
+        border: 1px solid var(--line);
+      }
+      .credit-card {
+        background: var(--bg);
+        padding: 18px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .credit-card.span-2 {
+        grid-column: 1 / -1;
+      }
+      .credit-card h3 {
+        margin: 0;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--mute);
+      }
+      .credit-card p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .badge-preview {
+        display: inline-block;
+        width: max-content;
+        max-width: 100%;
+      }
+      .badge-preview img {
+        display: block;
+        height: 40px;
+        width: auto;
+        image-rendering: pixelated;
+      }
+      .copy-row {
+        display: flex;
+        align-items: stretch;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .copy-row pre.code {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        font-size: 13px;
+      }
+      .copy-btn {
+        margin-left: 0;
+        padding: 8px 16px;
+        font-size: 13px;
+        white-space: nowrap;
+        align-self: flex-start;
+        cursor: pointer;
+      }
+      .credit-quote {
+        margin: 0;
+        padding: 12px 16px;
+        border-left: 2px solid var(--accent);
+        background: var(--panel);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .credit-card .pill-btn {
+        margin-left: 0;
+        padding: 8px 16px;
+        font-size: 13px;
+        align-self: flex-start;
+      }
+      .credit-card .bundle-meta {
+        font-size: 13px;
+        color: var(--mute);
+        letter-spacing: 0.04em;
+      }
+
       /* ---- Footer ---- */
       footer {
         margin-top: 64px;
@@ -481,7 +579,9 @@
         height: 28px;
         color: var(--mute);
         border-radius: 4px;
-        transition: color 120ms ease, background-color 120ms ease;
+        transition:
+          color 120ms ease,
+          background-color 120ms ease;
       }
       .icon-link:hover {
         color: var(--bg);
@@ -565,6 +665,9 @@
           font-size: 37px;
         }
         .install-grid {
+          grid-template-columns: 1fr;
+        }
+        .credit-grid {
           grid-template-columns: 1fr;
         }
       }
@@ -672,14 +775,24 @@
             autocapitalize="off"
             autocomplete="off"
             placeholder="Type anything here..."
-          >Hello World</textarea>
+          >
+Hello World</textarea
+          >
           <div class="tryout-meta">
             <span>ASCII only — unsupported glyphs fall back to cursive.</span>
             <span class="tryout-sizes" role="group" aria-label="Preview size">
-              <button type="button" data-size="30" aria-pressed="false">SM</button>
-              <button type="button" data-size="51" aria-pressed="true">MD</button>
-              <button type="button" data-size="72" aria-pressed="false">LG</button>
-              <button type="button" data-size="107" aria-pressed="false">XL</button>
+              <button type="button" data-size="30" aria-pressed="false">
+                SM
+              </button>
+              <button type="button" data-size="51" aria-pressed="true">
+                MD
+              </button>
+              <button type="button" data-size="72" aria-pressed="false">
+                LG
+              </button>
+              <button type="button" data-size="107" aria-pressed="false">
+                XL
+              </button>
             </span>
           </div>
         </div>
@@ -828,7 +941,9 @@
                 Right-click <code>Pixelspace-Regular.ttf</code> &rarr;
                 <strong>Install</strong>.
               </li>
-              <li>Pick <em>Install for all users</em> if you want it system-wide.</li>
+              <li>
+                Pick <em>Install for all users</em> if you want it system-wide.
+              </li>
             </ol>
           </div>
           <div class="install-card">
@@ -866,6 +981,79 @@
 
 .pixel { font-family: "Pixelspace", monospace; }</pre
         >
+      </section>
+
+      <!-- 10 Using Pixelspace -->
+      <section class="sec">
+        <div class="sec-head">
+          <h2>10 &nbsp; Using Pixelspace?</h2>
+          <div class="n">Badge &middot; credit &middot; cite</div>
+        </div>
+        <p class="credit-intro">
+          The <a href="https://openfontlicense.org">OFL</a> doesn't require
+          attribution for <em>using</em> the font &mdash; but a credit, or a
+          tag, is always appreciated and helps others find the project. A few
+          ready-to-paste options:
+        </p>
+        <div class="credit-grid">
+          <div class="credit-card span-2">
+            <h3>Badge</h3>
+            <p>The wordmark is rendered in Pixelspace itself.</p>
+            <a
+              class="badge-preview"
+              href="https://pixelspace.anirudha.dev"
+              aria-label="made with Pixelspace"
+            >
+              <img
+                src="badge.svg"
+                alt="made with Pixelspace"
+                width="466"
+                height="53"
+              />
+            </a>
+            <div class="copy-row">
+              <pre class="code" id="badge-md">
+[![made with Pixelspace](https://pixelspace.anirudha.dev/badge.svg)](https://pixelspace.anirudha.dev)</pre
+              >
+              <button
+                type="button"
+                class="pill-btn copy-btn"
+                data-copy="badge-md"
+              >
+                Copy
+              </button>
+            </div>
+            <p class="bundle-meta">
+              No image hosting handy? A plain
+              <a href="https://shields.io">shields.io</a> badge works too:
+              <code>font-Pixelspace</code>.
+            </p>
+          </div>
+          <div class="credit-card">
+            <h3>Credit line</h3>
+            <p>For a colophon, an about page, or a video description.</p>
+            <blockquote class="credit-quote">
+              Set in <strong>Pixelspace</strong>, a 5&times;7 pixel typeface by
+              Kumar Anirudha &mdash; pixelspace.anirudha.dev
+            </blockquote>
+          </div>
+          <div class="credit-card">
+            <h3>Cite</h3>
+            <p>
+              This project ships a <code>CITATION.cff</code>, so GitHub's
+              <em>&ldquo;Cite this repository&rdquo;</em> button hands you
+              ready-made APA and BibTeX entries.
+            </p>
+            <a
+              class="pill-btn"
+              href="https://github.com/anistark/pixelspace#using-pixelspace"
+              target="_blank"
+              rel="noopener"
+            >
+              Cite this repository
+            </a>
+          </div>
+        </div>
       </section>
 
       <footer>
@@ -915,6 +1103,23 @@
             sizes.forEach((x) => x.setAttribute("aria-pressed", "false"));
             b.setAttribute("aria-pressed", "true");
             input.style.fontSize = b.dataset.size + "px";
+          });
+        });
+      })();
+
+      (() => {
+        document.querySelectorAll(".copy-btn").forEach((btn) => {
+          btn.addEventListener("click", async () => {
+            const src = document.getElementById(btn.dataset.copy);
+            if (!src) return;
+            try {
+              await navigator.clipboard.writeText(src.textContent.trim());
+              const original = btn.textContent;
+              btn.textContent = "Copied";
+              setTimeout(() => {
+                btn.textContent = original;
+              }, 1500);
+            } catch (e) {}
           });
         });
       })();
@@ -999,8 +1204,11 @@
       fill("grid-lower", range("a", "z"));
       fill("grid-digits", range("0", "9"));
       // Box drawing — skip U+254C–254F (heavy-double-dash variants not in this build).
-      fill("grid-boxdraw", codepoints(0x2500, 0x257F, [0x254C, 0x254D, 0x254E, 0x254F]));
-      fill("grid-blocks", codepoints(0x2580, 0x259F));
+      fill(
+        "grid-boxdraw",
+        codepoints(0x2500, 0x257f, [0x254c, 0x254d, 0x254e, 0x254f]),
+      );
+      fill("grid-blocks", codepoints(0x2580, 0x259f));
       fill("grid-punct", [
         "!",
         '"',
