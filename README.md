@@ -102,6 +102,35 @@ The top five rows sit above the baseline (cap area), the bottom two
 below (descender zone for `g j p q y`). Format is documented in
 `tools/parse_bitmap.py`.
 
+## Using Pixelspace?
+
+The OFL doesn't require attribution for *using* the font, but a credit —
+or a tag — is always appreciated and helps others find the project. A few
+ready-to-paste options:
+
+**Badge** — the wordmark is rendered in Pixelspace itself:
+
+[![made with Pixelspace](https://pixelspace.anirudha.dev/badge.svg)](https://pixelspace.anirudha.dev)
+
+```markdown
+[![made with Pixelspace](https://pixelspace.anirudha.dev/badge.svg)](https://pixelspace.anirudha.dev)
+```
+
+No image hosting handy? A plain [shields.io](https://shields.io) badge works too:
+
+[![made with Pixelspace](https://img.shields.io/badge/made_with-Pixelspace-000000?style=flat-square)](https://pixelspace.anirudha.dev)
+
+```markdown
+[![made with Pixelspace](https://img.shields.io/badge/made_with-Pixelspace-000000?style=flat-square)](https://pixelspace.anirudha.dev)
+```
+
+**Credit line** — for a colophon, an about page, or a video description:
+
+> Set in **Pixelspace**, a 5×7 pixel typeface by Kumar Anirudha — <https://pixelspace.anirudha.dev>
+
+**Citation** — this repo ships a [`CITATION.cff`](CITATION.cff), so GitHub's
+*"Cite this repository"* button hands you ready-made APA and BibTeX entries.
+
 ## License
 
 Pixelspace is licensed under the **SIL Open Font License, Version 1.1**.
