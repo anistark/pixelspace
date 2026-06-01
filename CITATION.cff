@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use Pixelspace, an attribution or citation is appreciated (the OFL does not require it). You can use the metadata below."
+title: "Pixelspace"
+abstract: >-
+  An original 5×7 pixel display typeface — single weight, 474 glyphs,
+  with the full Google Fonts Latin-core set plus Unicode Box Drawing and
+  Block Elements for terminal/TUI use. Licensed under the SIL Open Font
+  License 1.1.
+type: software
+authors:
+  - given-names: Kumar
+    family-names: Anirudha
+    alias: anistark
+version: "1.100"
+date-released: "2026-05-01"
+license: OFL-1.1
+repository-code: "https://github.com/anistark/pixelspace"
+url: "https://pixelspace.anirudha.dev"
+keywords:
+  - font
+  - typeface
+  - pixel-font
+  - bitmap-font
+  - monospace
+  - terminal
+  - opentype

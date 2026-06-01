@@ -36,6 +36,11 @@ preview: build
 specimen: build
     {{py}} tools/specimen.py
 
+# Regenerate docs/badge.svg — the "made with Pixelspace" badge whose wordmark
+# is drawn in the font itself (reads sources/glyphs.txt, no build needed).
+badge:
+    {{py}} tools/badge_svg.py
+
 # Verify fonts/ and docs/ binaries are byte-identical + CSS is staged.
 # Pure compare — does NOT rebuild, so it reflects the on-disk state.
 # Catches hand-edits or missed copies after a partial build.
